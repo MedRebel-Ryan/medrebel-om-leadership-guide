@@ -1745,6 +1745,112 @@
   .cover-hero::before { content:""; position:absolute; inset:0; background:linear-gradient(0deg, var(--navy) 0%, rgba(13,27,42,0.55) 28%, rgba(13,27,42,0.10) 70%, transparent 100%); z-index:1; }
   .cover-hero::after { content:""; position:absolute; left:0; right:0; bottom:0; height:3px; background:var(--cyan); z-index:2; }
 </style>
+
+<style>
+/* ════════════════════════════════════════════════
+   iPhone / Touch Optimizations
+   ════════════════════════════════════════════════ */
+
+/* Kill 300ms tap delay everywhere */
+html { touch-action: manipulation; }
+a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(0,180,216,0.12); }
+
+/* Smooth anchor scrolling */
+html { scroll-behavior: smooth; }
+
+@media (max-width: 900px) {
+
+  /* four-layers: was missed in original collapse list */
+  .four-layers {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    grid-template-columns: none !important;
+  }
+
+  /* Data tables: horizontal scroll instead of cramped fixed-width */
+  .data-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 12px !important;
+  }
+  .data-table th, .data-table td {
+    white-space: nowrap;
+    padding: 8px 12px !important;
+  }
+
+  /* Feature-quote: move quote mark out of flow so it doesn't overlap text */
+  .feature-quote {
+    padding: 16px 18px 18px !important;
+  }
+  .feature-quote::before {
+    position: relative !important;
+    display: block;
+    top: 0 !important;
+    left: 0 !important;
+    font-size: 44px !important;
+    line-height: 0.6;
+    margin-bottom: 4px;
+  }
+
+  /* TOC items: 44px tap targets */
+  .toc-item {
+    min-height: 44px;
+    display: flex !important;
+    align-items: center;
+  }
+
+  /* Fork card CTAs: 44px tap targets */
+  .fork-card-cta {
+    min-height: 44px !important;
+    padding: 13px 22px !important;
+    justify-content: center;
+  }
+
+  /* Demo/schedule links in highlight-box: tap-friendly */
+  .highlight-box a {
+    display: inline-block;
+    padding: 4px 0;
+    min-height: 32px;
+    line-height: 32px;
+  }
+
+  /* Mode switch: full-width centered bar, easier to tap */
+  .mode-switch {
+    left: 12px !important;
+    right: 12px !important;
+    bottom: 14px !important;
+    width: auto !important;
+    justify-content: stretch;
+  }
+  .mode-switch button {
+    flex: 1;
+    min-height: 44px !important;
+    padding: 10px 14px !important;
+    font-size: 12px !important;
+    text-align: center;
+  }
+
+  /* Body text: floor at 15px so iOS doesn't need to zoom */
+  p { font-size: 15px !important; line-height: 1.6 !important; }
+  li { font-size: 14px !important; line-height: 1.6 !important; }
+
+  /* Stat callout row: wrap gracefully */
+  .stat-callout-row { gap: 16px; }
+  .stat-callout-item { min-width: 100px; }
+}
+
+/* Smallest iPhones (SE, mini) */
+@media (max-width: 390px) {
+  .cover-title { font-size: 32px !important; }
+  .fork-title  { font-size: 28px !important; }
+  .feature-quote-text { font-size: 15px !important; }
+  .chapter-title { font-size: 22px !important; }
+  .page { padding: 22px 14px !important; }
+}
+</style>
+
 </head>
 <body class="mode-full">
 
